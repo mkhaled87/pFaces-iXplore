@@ -15,7 +15,7 @@ iXplore utilizes a moving time-window to limit the explosion of the branches of 
 
 iXplore is intended to be parallized and implemented in the acceleration ecosystem pFaces. Currently, a MATLAB prototyple is made avalaible in this repo for discussion and improvement before the parallization of the technqie.
 
-iXplore is very resilent to the size and dimensionality of the state-space, as it only explores the state-space form the input-space prespective. This becomes handy with systems that has large state-spaces and small input spaces. For example, we used iXplore to design a controller for a 7-dim BMW 320i vehilce to do a parallel park in a parking lot. Running the example's [matlab_prototype/ex_vehicle_park/simulate.m](MATLAB Script), will give you the following simulation:
+iXplore is very resilent to the size and dimensionality of the state-space, as it only explores the state-space form the input-space prespective. This becomes handy with systems that has large state-spaces and small input spaces. For example, we used iXplore to design a controller for a 7-dim BMW 320i vehilce to do a parallel park in a parking lot. Running the example's [MATLAB Script](matlab_prototype/ex_vehicle_park/simulate.m), will give you the following simulation:
 
 ![Alt Text](matlab_prototype/ex_vehicle_park/figs/car_park.gif)
 
