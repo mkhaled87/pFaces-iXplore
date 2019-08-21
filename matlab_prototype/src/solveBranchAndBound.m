@@ -17,7 +17,15 @@ function [best_traces, best_qualities, finished_slots] = solveBranchAndBound(spe
         disp(['solveBranchAndBound: Number of slots: ' num2str(num_slots)]);
         disp(['solveBranchAndBound: Time depth of each slot: ' num2str(branch_depth)]);
         disp(['solveBranchAndBound: Number of traces searched in each slot: ' num2str(traces_per_slot)]);
-        disp(['solveBranchAndBound: Non-optimized search space size: ' num2str((options.is_quantizer.getNumSymbols())^(branch_depth*num_slots))]);
+        
+        non_optim = (options.is_quantizer.getNumSymbols())^(branch_depth*num_slots);
+        if non_optim == Inf
+            disp(['solveBranchAndBound: Non-optimized search space size: > ' num2str(realmax)]);
+        else
+            disp(['solveBranchAndBound: Non-optimized search space size: ' num2str(non_optim)]);
+        end
+        
+        
         disp(['solveBranchAndBound: Optimized search space size: <= ' num2str((options.is_quantizer.getNumSymbols())^(branch_depth)*num_slots)]);
         
     end
@@ -88,14 +96,14 @@ function [best_traces, best_qualities, finished_slots] = solveBranchAndBound(spe
         
         if options.break_if_found && sorted_qualities(1,1) == 1
             if options.verbose
-                disp(['solveBranchAndBound: Finshed because no traces were found !']);
+                disp(['solveBranchAndBound: Finshed because a trace wss found!']);
             end           
             return;
         end
         
         if options.break_if_all_traces_fail && sorted_qualities(1,1) == 0
             if options.verbose
-                disp(['solveBranchAndBound: Finshed because a trace wss found !']);
+                disp(['solveBranchAndBound: Finshed because no traces were found!']);
             end
             return;
         end

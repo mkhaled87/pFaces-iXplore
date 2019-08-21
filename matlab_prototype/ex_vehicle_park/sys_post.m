@@ -1,11 +1,7 @@
 %% The post function
-function xp = sys_post(x, u)
-    if nargin ~= 2
-        error('Invalid input !');
-    end 
+function xp = sys_post(x, u, options)
     
-    % sampling time
-    Ts = 0.10;
+    Ts = options.Ts;
     
     % coordinate !
     if all(size(x) == [1 5])
@@ -14,6 +10,6 @@ function xp = sys_post(x, u)
         xp = sys_post_7d(Ts, x, u);
     else
         error('invalid dim !');
-    end 
+    end
     
 end
